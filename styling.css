@@ -1,0 +1,153 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+:root {
+    --primary-blue: #2A27CC;       /* The main button & active state color */
+    --hover-blue: #1E1B9E;         /* A slightly darker shade for hover effects */
+    --light-blue-bg: #F0F2FF;      /* Very light blue for background sections/cards */
+    --text-dark: #1A1A1A;          /* For headings */
+    --text-muted: #6B7280;     /* For "Date" and "Remark" text in the timeline */
+    --border : #D1D5DB ;   
+}
+.trackingPage{
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+#track-form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center ;
+    gap: 1em;
+}
+.input-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+#track{
+    color: black;
+    font-size: 1.6rem;
+    font-weight: 900;
+   
+}
+#Number, #track-btn{
+    padding: 13px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border)
+}
+#track-btn{
+    padding: 13px 23px;
+     background-color: var(--primary-blue);
+     color: white;
+     font-size: 1rem;
+     font-weight: 500;
+     border: none;
+}
+.hidden{
+    display: none;
+}
+.reveal {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+    background-color: white; /* Change from red */
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.trackingcard {
+    background-color: white;
+}
+/* Container for the whole timeline */
+/* --- Missing Timeline Logic --- */
+
+.timeline-container {
+    position: relative;
+    padding-left: 40px;
+    margin-top: 20px;
+}
+
+/* The Vertical Line */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    bottom: 25px;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Royal Blue Dots */
+.timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--primary-blue);
+    z-index: 2;
+}
+
+/* Pending State (Hollow Grey Dot) */
+.timeline-item.pending .timeline-dot {
+    background: #fff;
+    box-shadow: 0 0 0 2px var(--border);
+}
+
+.timeline-content h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+/* Match the screenshot typography */
+.timeline-meta {
+    margin: 2px 0;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.timeline-remark {
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Ensure the last item doesn't have a line trailing off too far */
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
