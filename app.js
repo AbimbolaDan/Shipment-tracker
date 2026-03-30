@@ -51,32 +51,61 @@ track_form.addEventListener('submit', (e) => {
         location: 'Kwara',
         Date: 'pending',
         time: 'pending',
+        time_delivered: '5:00PM',
         remarks: 'Waiting for arrival at final destination.',
-        done: true
+        done: false
     }
-]
+]    
 
-    
-   // Replace your existing cardElement variable with this:
+// const currentStatus = details[details.length - 1];
+const estDelivery = "28th April 2026";
+const currentStatusItem = details.filter(item => item.done).pop() || details[0];
 const timelineHTML = details.map((item) => `
-        <div class="timeline-item ${item.done ? '' : 'pending'}">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <h4>${item.status}</h4>
-                <p class="timeline-meta">${item.location} ${item.time !== 'Pending' ? '— ' + item.time : ''}</p>
-                <p class="timeline-remark">"${item.remarks}"</p>
-            </div>
+    <div class="timeline-item ${item.done ? 'done' : 'pending'}">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+            <h4>${item.status}</h4>
+            <p class="timeline-meta">${item.location} ${item.time !== 'pending' ? '— ' + item.time : ''}</p>
+            <p class="timeline-remark">"${item.remarks}"</p>
         </div>
-    `).join('');
+    </div>
+`).join('');
 
-    const cardElement = `
-         <div class="trackingcard">
-            <h2 style="color: var(--text-dark); margin-bottom: 20px;">Shipment Status</h2>
-            <div class="timeline-container">
+   
+// const currentData = details[details.length - 1]; 
+
+const cardElement = `
+     <div class="trackingcard">
+        <h2 style="color: var(--text-dark); margin-bottom: 20px;">Shipment Status</h2>
+        <div class="result-box">
+            <div class="timeline-container" style="flex: 2;">
                 ${timelineHTML}
             </div>
-         </div>
-    `;
+            
+            <div class="status_container">
+                <h3 style="border-bottom: 2px solid var(--primary-yellow); padding-bottom: 8px; margin-bottom: 15px;">Current Status</h3>
+
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Status:</p>
+                <h4 style="color: var(--primary-yellow); margin-bottom: 15px; font-size: 1.3rem;">
+                    ${currentStatusItem.status}
+                </h4>
+
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Current Location:</p>
+                <p style="font-weight: 600; margin-bottom: 15px;">${currentStatusItem.location}</p>
+
+                <div style="background: white; padding: 12px; border-radius: 8px; border-left: 4px solid var(--primary-yellow);">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">Remarks:</p>
+                    <p style="font-size: 0.85rem; font-style: italic;">${currentStatusItem.remarks}</p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Estimated Delivery:</p>
+                    <p style="font-weight: bold; color: var(--primary-blue); font-size: 1.1rem;">April 28, 2026</p>
+                </div>
+            </div>
+        </div>
+     </div>
+`;
     tracking_result.innerHTML = cardElement;
     tracking_result.classList.remove('hidden');
     tracking_result.classList.add('reveal');

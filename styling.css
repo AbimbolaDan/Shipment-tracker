@@ -4,12 +4,14 @@
     margin: 0;
 }
 :root {
-    --primary-blue: #2A27CC;       /* The main button & active state color */
-    --hover-blue: #1E1B9E;         /* A slightly darker shade for hover effects */
-    --light-blue-bg: #F0F2FF;      /* Very light blue for background sections/cards */
-    --text-dark: #1A1A1A;          /* For headings */
-    --text-muted: #6B7280;     /* For "Date" and "Remark" text in the timeline */
-    --border : #D1D5DB ;   
+    --primary-blue: #3B3EA5;    
+    --light-blue: #F2F3FF;   
+    --hover-blue: #1E1B9E;  
+    --light-blue-bg: #F0F2FF; 
+    --text-dark: #1A1A2E;          
+    --text-muted: #646691;   
+    --border : #D8DAF0 ;   
+    --primary-yellow: #FFCC2A;
 }
 .trackingPage{
     margin: 0 auto;
@@ -18,7 +20,6 @@
     padding: 50px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 
 .content-wrapper {
@@ -26,7 +27,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 #track-form{
@@ -67,9 +68,9 @@
 .reveal {
     display: block;
     width: 100%;
-    max-width: 600px;
+    max-width: 850px;
     margin-top: 30px;
-    background-color: white; /* Change from red */
+    background-color: white; 
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 25px;
@@ -79,8 +80,6 @@
 .trackingcard {
     background-color: white;
 }
-/* Container for the whole timeline */
-/* --- Missing Timeline Logic --- */
 
 .timeline-container {
     position: relative;
@@ -88,17 +87,9 @@
     margin-top: 20px;
 }
 
-/* The Vertical Line */
 .timeline-container::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 5px;
-    bottom: 25px;
-    width: 2px;
-    background: var(--border);
+   display: none;
 }
-
 .timeline-item {
     position: relative;
     margin-bottom: 30px;
@@ -106,7 +97,25 @@
     flex-direction: column;
 }
 
-/* The Royal Blue Dots */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -28px; 
+    margin-left: 7px; 
+    top: 21px;     
+    bottom: -35px; 
+    width: 2px;
+    background: var(--border);
+    z-index: 1;
+}
+
+.timeline-item.done::after {
+    background: var(--primary-yellow);
+}
+
+.timeline-item:last-child::after {
+    display: none;
+}
 .timeline-dot {
     position: absolute;
     left: -28px;
@@ -120,7 +129,7 @@
     z-index: 2;
 }
 
-/* Pending State (Hollow Grey Dot) */
+
 .timeline-item.pending .timeline-dot {
     background: #fff;
     box-shadow: 0 0 0 2px var(--border);
@@ -132,7 +141,7 @@
     color: var(--text-dark);
 }
 
-/* Match the screenshot typography */
+
 .timeline-meta {
     margin: 2px 0;
     font-size: 0.85rem;
@@ -147,7 +156,26 @@
     font-style: italic;
 }
 
-/* Ensure the last item doesn't have a line trailing off too far */
+
 .timeline-item:last-child {
     margin-bottom: 0;
+}
+
+.timeline-item:last-child::after {
+    display: none;
+}
+.status_container{
+    flex: 1.5;
+    min-width: 250px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    height: fit-content;
+    border-radius: 12px;
+    background-color: var(--light-blue-bg);
+}
+
+.result-box{
+    display: flex;
+    align-items: center;
+    gap: 5em;
 }
