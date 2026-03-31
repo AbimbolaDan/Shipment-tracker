@@ -78,7 +78,7 @@
 }
 
 .trackingcard {
-    background-color: white;
+    background-color: white
 }
 
 .timeline-container {
@@ -197,4 +197,45 @@
     display: flex;
     align-items: center;
     gap: 5em;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper{
+        padding: 10px;
+        width: 100%;
+    }
+    .result-box{
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+    .reveal{
+        box-shadow: none;
+        border: none;
+    }
+    .status_container{
+        width: 100%;
+        order: -1;
+    }
+    .timeline-container{
+        padding-left: 0;
+    }
+    #track-form{
+        width: 100%;
+    }
+    .input-div{
+        width: 100%;
+    }
+    #Number, #track-btn{
+        width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    #track {
+        font-size: 1.3rem; /* Slightly smaller title */
+    }
+
+    .timeline-content h4 {
+        font-size: 0.9rem;
+    }
 }
