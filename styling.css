@@ -128,7 +128,26 @@
     box-shadow: 0 0 0 2px var(--primary-blue);
     z-index: 2;
 }
+/* Specific Status Dot Colors */
+.timeline-dot.dot-red {
+    background-color: #EF4444; /* Red */
+    box-shadow: 0 0 0 2px #EF4444;
+}
 
+.timeline-dot.dot-yellow {
+    background-color: var(--primary-yellow); /* Your brand yellow */
+    box-shadow: 0 0 0 2px var(--primary-yellow);
+}
+
+.timeline-dot.dot-green {
+    background-color: #22C55E; /* Green */
+    box-shadow: 0 0 0 2px #22C55E;
+}
+
+/* Ensure the white border still exists for all dots */
+.timeline-dot {
+    border: 3px solid #fff;
+}
 
 .timeline-item.pending .timeline-dot {
     background: #fff;

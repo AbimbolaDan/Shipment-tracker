@@ -44,7 +44,7 @@ track_form.addEventListener('submit', (e) => {
         Date: '7th April 2026',
         time: '1:00PM',
         remarks: 'Shipment is currently moving between hubs.',
-        done: true
+        done: false
     },
     {
         status: 'Delivered',
@@ -60,18 +60,36 @@ track_form.addEventListener('submit', (e) => {
 // const currentStatus = details[details.length - 1];
 const estDelivery = "28th April 2026";
 const currentStatusItem = details.filter(item => item.done).pop() || details[0];
-const timelineHTML = details.map((item) => `
-    <div class="timeline-item ${item.done ? 'done' : 'pending'}">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-            <h4>${item.status}</h4>
-            <p class="timeline-meta">${item.location} ${item.time !== 'pending' ? '— ' + item.time : ''}</p>
-            <p class="timeline-remark">"${item.remarks}"</p>
-        </div>
-    </div>
-`).join('');
+// Inside your timelineHTML map function
+const timelineHTML = details.map((item) => {
+    // 1. Determine the color class based on the status text
+    let statusColorClass = '';
+    const statusLower = item.status.toLowerCase();
 
-   
+    if (statusLower.includes('out for delivery')) {
+        statusColorClass = 'dot-red';
+    } else if (statusLower.includes('in transit')) {
+        statusColorClass = 'dot-yellow';
+    } else if (statusLower.includes('delivered')) {
+        statusColorClass = 'dot-green';
+    }
+
+    return `
+        <div class="timeline-item ${item.done ? 'done' : 'pending'}">
+            <div class="timeline-dot ${statusColorClass}"></div>
+            <div class="timeline-content">
+                <h4>${item.status}</h4>
+                <p class="timeline-meta">${item.location} ${item.time !== 'pending' ? '— ' + item.time : ''}</p>
+                <p class="timeline-remark">"${item.remarks}"</p>
+            </div>
+        </div>
+    `;
+}).join('');
+
+   let currentColor = 'var(--primary-blue)'; // Default
+if (currentStatusItem.status.toLowerCase().includes('out for delivery')) currentColor = '#EF4444';
+if (currentStatusItem.status.toLowerCase().includes('in transit')) currentColor = '#FFCC2A';
+if (currentStatusItem.status.toLowerCase().includes('delivered')) currentColor = '#22C55E';
 // const currentData = details[details.length - 1]; 
 
 const cardElement = `
@@ -86,7 +104,7 @@ const cardElement = `
                 <h3 style="border-bottom: 2px solid var(--primary-yellow); padding-bottom: 8px; margin-bottom: 15px;">Current Status</h3>
 
                 <p style="font-size: 0.8rem; color: var(--text-muted);">Status:</p>
-                <h4 style="color: var(--primary-yellow); margin-bottom: 15px; font-size: 1.3rem;">
+                <h4 style="color: ${currentColor}; margin-bottom: 15px; font-size: 1.3rem;">
                     ${currentStatusItem.status}
                 </h4>
 
