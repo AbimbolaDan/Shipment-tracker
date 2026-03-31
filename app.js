@@ -44,7 +44,7 @@ track_form.addEventListener('submit', (e) => {
         Date: '7th April 2026',
         time: '1:00PM',
         remarks: 'Shipment is currently moving between hubs.',
-        done: false
+        done: true
     },
     {
         status: 'Delivered',
@@ -53,7 +53,7 @@ track_form.addEventListener('submit', (e) => {
         time: 'pending',
         time_delivered: '5:00PM',
         remarks: 'Waiting for arrival at final destination.',
-        done: false
+        done: true
     }
 ]    
 
