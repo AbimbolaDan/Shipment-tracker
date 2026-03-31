@@ -2,18 +2,20 @@
     padding: 0;
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 :root {
-    --primary-blue: #3B3EA5;    
+    --primary-blue: #3B3EA5;  
+    --hover-blue: #1E1B9E  ;
     --primary-green: #22C55E;
-    --primary-red: #EF4444; ;
-    --light-blue: #F2F3FF;    
+    --primary-red: #EF4444; ; 
     --light-blue-bg: #F0F2FF; 
     --text-dark: #1A1A2E;          
     --text-muted: #646691;   
     --border : #D8DAF0 ;   
     --primary-yellow: #FFCC2A;
 }
+
 .trackingPage{
     margin: 0 auto;
     width: 100%;
@@ -29,6 +31,11 @@
     align-items: center;
     width: 100%;
     max-width: 700px;
+}
+#track, .trackingcard h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: -0.5px; /* Makes it look more like a professional UI */
+    color: var(--text-dark);
 }
 
 #track-form{
@@ -50,21 +57,40 @@
     font-weight: 900;
    
 }
-#Number, #track-btn{
+#Number{
     padding: 13px 20px;
-    border-radius: 8px;
-    border: 1px solid var(--border)
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    outline: none;
+    transition: border-color 0.3s ease;
 }
+
+#Number:focus {
+    border-color: var(--primary-blue);
+}
+
 #track-btn{
     padding: 13px 23px;
      background-color: var(--primary-blue);
      color: white;
      font-size: 1rem;
-     font-weight: 500;
+     font-weight: 600;
      border: none;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border-radius: 12px;
+}
+#track-btn:hover {
+    background-color: var(--hover-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 62, 165, 0.2);
+}
+#track-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(59, 62, 165, 0.2);
 }
 .hidden{
-    display: none;
+    display: none !important;
 }
 .reveal {
     display: block;
@@ -200,6 +226,11 @@
     gap: 5em;
 }
 
+.foot{
+    color: var(--primary-blue);
+    text-align: center;
+    margin-top: 30px;
+}
 @media (max-width: 768px) {
     .content-wrapper{
         padding: 10px;
@@ -231,6 +262,9 @@
     }
     #Number, #track-btn{
         width: 100%;
+    }
+    #track-btn{
+       font-size: 1.7rem;
     }
 }
 

@@ -3,16 +3,26 @@ const track_form = document.getElementById('track-form');
 const input= document.getElementById('Number');
 const tracking_result = document.getElementById('tracking-results')
 
-
+input.addEventListener('input', () => {
+    if(input.value.trim() === "") {
+        tracking_result.classList.add('hidden');
+    }
+})
 track_form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const inputvalue = input.value.trim();
 
-    const inputvalue = input.value;
     if(inputvalue === "") {
         alert('Please input a Shipment ID');
-        return
+        tracking_result.innerHTML = "";          
+        tracking_result.classList.add('hidden'); 
+        tracking_result.classList.remove('reveal');
+        return;
     }
     
+
+    tracking_result.classList.remove('hidden');
+    tracking_result.classList.add('reveal');
     
     const details = [
         {
@@ -94,7 +104,7 @@ if (currentStatusItem.status.toLowerCase().includes('delivered')) currentColor =
 
 const cardElement = `
      <div class="trackingcard">
-        <h2 style="color: var(--text-dark); margin-bottom: 20px;">Shipment Status</h2>
+        <h2 style="color: var(--text-dark); margin-bottom: 20px; font-weight: 800">GSIL Shipment Status</h2>
         <div class="result-box">
             <div class="timeline-container" style="flex: 2;">
                 ${timelineHTML}
@@ -122,6 +132,9 @@ const cardElement = `
                 </div>
             </div>
         </div>
+         <footer class="foot">
+        &copy;Designed by Webixion
+    </footer>
      </div>
 `;
     tracking_result.innerHTML = cardElement;
