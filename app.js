@@ -62,7 +62,6 @@ const estDelivery = "28th April 2026";
 const currentStatusItem = details.filter(item => item.done).pop() || details[0];
 // Inside your timelineHTML map function
 const timelineHTML = details.map((item) => {
-    // 1. Determine the color class based on the status text
     let statusColorClass = '';
     const statusLower = item.status.toLowerCase();
 
@@ -87,9 +86,9 @@ const timelineHTML = details.map((item) => {
 }).join('');
 
    let currentColor = 'var(--primary-blue)'; // Default
-if (currentStatusItem.status.toLowerCase().includes('out for delivery')) currentColor = '#EF4444';
-if (currentStatusItem.status.toLowerCase().includes('in transit')) currentColor = '#FFCC2A';
-if (currentStatusItem.status.toLowerCase().includes('delivered')) currentColor = '#22C55E';
+if (currentStatusItem.status.toLowerCase().includes('out for delivery')) currentColor = 'var(--primary-red)';
+if (currentStatusItem.status.toLowerCase().includes('in transit')) currentColor = 'var(--primary-yellow)';
+if (currentStatusItem.status.toLowerCase().includes('delivered')) currentColor = 'var(--primary-green)';
 // const currentData = details[details.length - 1]; 
 
 const cardElement = `

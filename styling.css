@@ -5,8 +5,9 @@
 }
 :root {
     --primary-blue: #3B3EA5;    
-    --light-blue: #F2F3FF;   
-    --hover-blue: #1E1B9E;  
+    --primary-green: #22C55E;
+    --primary-red: #EF4444; ;
+    --light-blue: #F2F3FF;    
     --light-blue-bg: #F0F2FF; 
     --text-dark: #1A1A2E;          
     --text-muted: #646691;   
@@ -128,23 +129,23 @@
     box-shadow: 0 0 0 2px var(--primary-blue);
     z-index: 2;
 }
-/* Specific Status Dot Colors */
+
 .timeline-dot.dot-red {
-    background-color: #EF4444; /* Red */
-    box-shadow: 0 0 0 2px #EF4444;
+    background-color: var(--primary-red);
+    box-shadow: 0 0 0 2px var(--primary-red)
 }
 
 .timeline-dot.dot-yellow {
-    background-color: var(--primary-yellow); /* Your brand yellow */
+    background-color: var(--primary-yellow); 
     box-shadow: 0 0 0 2px var(--primary-yellow);
 }
 
 .timeline-dot.dot-green {
-    background-color: #22C55E; /* Green */
-    box-shadow: 0 0 0 2px #22C55E;
+    background-color: var(--primary-green); 
+    box-shadow: 0 0 0 2px var(--primary-green);
 }
 
-/* Ensure the white border still exists for all dots */
+
 .timeline-dot {
     border: 3px solid #fff;
 }
@@ -202,12 +203,12 @@
 @media (max-width: 768px) {
     .content-wrapper{
         padding: 10px;
-        width: 100%;
+        max-width: 100%;
     }
     .result-box{
         display: flex;
         flex-direction: column;
-        gap: 2em;
+        gap: 3em;
     }
     .reveal{
         box-shadow: none;
@@ -225,14 +226,17 @@
     }
     .input-div{
         width: 100%;
+        display: flex;
+        flex-direction: column;
     }
     #Number, #track-btn{
         width: 100%;
     }
 }
+
 @media (max-width: 480px) {
     #track {
-        font-size: 1.3rem; /* Slightly smaller title */
+        font-size: 1.3rem; 
     }
 
     .timeline-content h4 {
