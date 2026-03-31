@@ -9,7 +9,8 @@ track_form.addEventListener('submit', (e) => {
 
     const inputvalue = input.value;
     if(inputvalue === "") {
-        alert('input Shipment ID')
+        alert('Please input a Shipment ID');
+        return
     }
     
     
