@@ -251,11 +251,7 @@
 .GS{
     color: var(--primary-blue);
 }
-#map {
-    height: 350px !important;
-    width: 100%;
-    background: #f0f0f0; /* Shows a grey box while loading */
-}
+
 @media (max-width: 768px) {
     .content-wrapper{
         padding: 10px;
@@ -292,6 +288,7 @@
     }
     #map-hero{
         height: 340px;
+        padding: 10px;
     }
 }
 
