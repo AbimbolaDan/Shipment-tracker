@@ -8,6 +8,7 @@
     --primary-blue: #3B3EA5;  
     --hover-blue: #1E1B9E  ;
     --primary-green: #22C55E;
+    --hover-green: #1A9F4B;
     --primary-red: #EF4444; ; 
     --light-blue-bg: #F0F2FF; 
     --text-dark: #1A1A2E;          
@@ -33,11 +34,10 @@
     border-bottom: 1px solid var(--border);
     position: relative;
     padding: 50px;
-    border-radius: 24px;
-    /* left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 .content-wrapper {
     display: flex;
@@ -48,7 +48,7 @@
 }
 #track, .trackingcard h2 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: -0.5px; /* Makes it look more like a professional UI */
+    letter-spacing: -0.5px;
     color: var(--text-dark);
 }
 
@@ -70,7 +70,6 @@
     color: black;
     font-size: 1.6rem;
     font-weight: 900;
-   
 }
 #Number{
     padding: 13px 20px;
@@ -85,7 +84,7 @@
 }
 
 #track-btn{
-    padding: 13px 23px;
+     padding: 13px 23px;
      background-color: var(--primary-blue);
      color: white;
      font-size: 1rem;
@@ -106,19 +105,17 @@
 }
 .hidden{
     display: none !important;
-    height: 0 !important; /* Forces the container to collapse */
+    height: 0 !important; 
     overflow: hidden;
 }
 .reveal {
     display: block;
-    width: 100%;
-    max-width: 850px;
+    width: 67vw;
+    max-width: 1200px;
     margin-top: 30px;
     background-color: white; 
-    border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 15px;
 }
 
 .trackingcard {
@@ -228,7 +225,7 @@
     display: none;
 }
 .status_container{
-    flex: 1.5;
+    flex: 1;
     min-width: 250px;
     padding: 25px;
     border: 1px solid var(--border);
@@ -251,6 +248,38 @@
 .GS{
     color: var(--primary-blue);
 }
+.est-delivery-box{
+    margin-top: 60px;
+    padding: 15px;
+    background: #fffbe6;
+    border-radius: 8px;
+    border: 1px solid #ffe58f;
+    display: flex;
+}
+.Expect-Date {
+    color: var(--text-dark);
+    font-weight: 700;
+    font-family: 'Inter' sans-serif;
+    font-size: 1.2rem;
+}
+.link-back{
+    margin-top: 58px;
+}
+.back{
+    text-decoration: none;
+    background-color: var(--primary-green);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+.back:hover{
+    background-color: var(--hover-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 62, 165, 0.2);
+}
+
 
 @media (max-width: 768px) {
     .content-wrapper{
